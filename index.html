@@ -1,0 +1,38 @@
+<html>
+<body>
+Alumnos:
+<form action="mostrar.php" method="post">
+<select name="cboDatos">
+<!--
+<option>A</option>
+<option>B</option>
+<option>C</option>
+-->
+<?php
+$cn = mysql_connect("127.0.0.1:8080","root","usbshow");
+$bd = mysql_select_db("sistema", $cn);
+
+$rsAlumnos = mysql_query(
+"select * from alumnos",
+$cn);
+
+while ( $datos = mysql_fetch_array($rsAlumnos))
+{
+$k = $datos["matricula"];
+$k = $datos["nombre"];
+$s = " ";
+if( $k == "11111")
+{
+$s = "SELECTED":
+}
+echo "<option value='$k'>$t</option>\n";
+}
+mysql_free_result($rsAlumnos);
+mysql_close($cn);
+?>
+</select>
+<input type="submit">
+</form>
+
+</body>
+</html>
